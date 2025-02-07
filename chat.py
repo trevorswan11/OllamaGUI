@@ -13,7 +13,8 @@ class Model:
         self.image_analysis: bool = self.model == 'llama3.2-vision'
         self.save_directory = save_directory or f"{self.model}_chat_logs"
         os.makedirs(self.save_directory, exist_ok=True)
-        os.makedirs(f"{self.save_directory}/image_logs", exist_ok=True)
+        if self.image_analysis:
+            os.makedirs(f"{self.save_directory}/image_logs", exist_ok=True)
     
     def chat(self, chat: Chat):
         curr_date, curr_time = time.strftime("%y-%m-%d"), time.strftime("%H-%M-%S")
@@ -39,9 +40,10 @@ class Model:
             ):
                 f.write(response['message']['content'])
                 yield response['message']['content']
-    
-llama32 = Model("llama3.2-vision")
-query = Chat("What is in this image? Explain in One Sentence!", image_path="test.png") 
 
-for line in llama32.chat(query):
-    print(line, end='', flush=True)       
+def _test():    
+    llama32 = Model("llama3.2")
+    query = Chat("What is in this image? Explain in One Sentence!", image_path="test.png") 
+
+    for line in llama32.chat(query):
+        print(line, end='', flush=True)       
