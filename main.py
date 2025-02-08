@@ -1,5 +1,4 @@
-import window
+from window import launch
 
 if __name__ == "__main__":
-    main_window = window.Window()
-    main_window.run()
+    launch()
