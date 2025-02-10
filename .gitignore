@@ -1,3 +1,4 @@
 .vscode 
 py_env
 __pycache__
+*.exe
