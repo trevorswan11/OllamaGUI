@@ -1,0 +1,6 @@
+ollama
+tkinter
+time
+os
+shutil
+sys

@@ -1,0 +1,1 @@
+pyinstaller --onefile --windowed --name OllamaGUI --icon="assets/ollama_icon.ico" --add-data "assets/ollama_icon.ico;assets" main.py
